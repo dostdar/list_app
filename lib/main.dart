@@ -19,7 +19,7 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Text("my app"),
         ),
-        body:ProudctManager() ,
+        body:ProudctManager("first") ,
       ),
     );
   }
