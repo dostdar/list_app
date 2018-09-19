@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wooow/product_control.dart';
 import './products.dart';
 
 class ProudctManager extends StatefulWidget {
@@ -9,34 +10,31 @@ class ProudctManager extends StatefulWidget {
 }
 
 class _ProudctManagerState extends State<ProudctManager> {
-
   List<String> list = ["asdsa", "asda"];
 
-@override
+  @override
   void initState() {
     list.add(widget.first);
     super.initState();
   }
 
+  void addProduct(String product) {
+    setState(() {
+      list.add("value");
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: <Widget>[
-        Column(
-          children: <Widget>[
-            RaisedButton(
-              child: Text("data"),
-              onPressed: () {
-                setState(() {
-                  list.add("value");
-                });
-              },
-            ),
-            Container(
-              child: Products(list: list),
-            )
-          ],
+    return Column(
+      children: [
+        Container(
+          margin: EdgeInsets.all(10.0),
+          child: ProductControl(addProduct),
         ),
+        Expanded(
+          child: Products(list: list),
+        )
       ],
     );
   }
