@@ -12,7 +12,10 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("my app"),
       ),
-      body: ProudctManager("first"),
+      body: ProudctManager({
+          "title": "chocolat",
+          "img" : "assets/food.jpeg",
+        }),
     );
   }
 }

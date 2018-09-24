@@ -5,9 +5,12 @@ class Products extends StatelessWidget {
   const Products({
     Key key,
     @required this.list,
+    this.delProduct
+
   }) : super(key: key);
 
-  final List<String> list;
+  final List<Map> list;
+  final Function delProduct;
 
   @override
   Widget build(BuildContext context) {
@@ -18,19 +21,25 @@ class Products extends StatelessWidget {
           margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
           child: Column(
             children: <Widget>[
-              Image.asset("assets/food.jpeg"),
-              Text(list[index]),
+              Image.asset(list[index]["img"]),
               ButtonBar(
                 alignment: MainAxisAlignment.center,
                 children: <Widget>[
                   FlatButton(
-                      child: Text("data"),
-                      onPressed: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (BuildContext context) => Product(),
-                            ),
-                          ))
+                    child: Text(list[index]["title"]),
+                    onPressed: () => Navigator.push<bool>(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) => Product(
+                                  map: list[index],
+                                ),
+                          ),
+                        ).then((bool value) {
+                          if (value) {
+                            delProduct(index);
+                          } 
+                        }),
+                  )
                 ],
               )
             ],

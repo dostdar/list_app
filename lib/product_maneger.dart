@@ -3,14 +3,14 @@ import 'package:wooow/product_control.dart';
 import './products.dart';
 
 class ProudctManager extends StatefulWidget {
-  final String first;
+  final Map first;
   ProudctManager(this.first);
   @override
   _ProudctManagerState createState() => _ProudctManagerState();
 }
 
 class _ProudctManagerState extends State<ProudctManager> {
-  List<String> list = ["asdsa", "asda"];
+  List<Map> list = [];
 
   @override
   void initState() {
@@ -18,9 +18,15 @@ class _ProudctManagerState extends State<ProudctManager> {
     super.initState();
   }
 
-  void addProduct(String product) {
+  void delProduct(int index) {
     setState(() {
-      list.add("value");
+          list.removeAt(index);
+        });
+  }
+
+  void addProduct(Map product) {
+    setState(() {
+      list.add(product);
     });
   }
 
@@ -33,7 +39,7 @@ class _ProudctManagerState extends State<ProudctManager> {
           child: ProductControl(addProduct),
         ),
         Expanded(
-          child: Products(list: list),
+          child: Products(list: list , delProduct: delProduct,),
         )
       ],
     );
