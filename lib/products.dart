@@ -2,12 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:wooow/pages/product.dart';
 
 class Products extends StatelessWidget {
-  const Products({
-    Key key,
-    @required this.list,
-    this.delProduct
-
-  }) : super(key: key);
+  const Products({Key key, @required this.list, this.delProduct})
+      : super(key: key);
 
   final List<Map> list;
   final Function delProduct;
@@ -37,7 +33,7 @@ class Products extends StatelessWidget {
                         ).then((bool value) {
                           if (value) {
                             delProduct(index);
-                          } 
+                          }
                         }),
                   )
                 ],

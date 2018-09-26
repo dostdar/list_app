@@ -12,8 +12,8 @@ class Product extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: (){
-        Navigator.pop(context,false);
+      onWillPop: () {
+        Navigator.pop(context, false);
         return Future.value(false);
       },
       child: Scaffold(

@@ -10,7 +10,7 @@ class ProductControl extends StatelessWidget {
       onPressed: () {
         addProduct({
           "title": "cheeeze",
-          "img" : "assets/food.jpeg",
+          "img": "assets/food.jpeg",
         });
       },
     );

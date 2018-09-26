@@ -2,33 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:wooow/product_control.dart';
 import './products.dart';
 
-class ProudctManager extends StatefulWidget {
-  final Map first;
-  ProudctManager(this.first);
-  @override
-  _ProudctManagerState createState() => _ProudctManagerState();
-}
-
-class _ProudctManagerState extends State<ProudctManager> {
-  List<Map> list = [];
-
-  @override
-  void initState() {
-    list.add(widget.first);
-    super.initState();
-  }
-
-  void delProduct(int index) {
-    setState(() {
-          list.removeAt(index);
-        });
-  }
-
-  void addProduct(Map product) {
-    setState(() {
-      list.add(product);
-    });
-  }
+class ProudctManager extends StatelessWidget {
+  // final List<Map<String, String>> products;
+  ProudctManager(this.list, this.addProduct, this.delProduct);
+  final Function addProduct;
+  final Function delProduct;
+  final List<Map> list;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +18,10 @@ class _ProudctManagerState extends State<ProudctManager> {
           child: ProductControl(addProduct),
         ),
         Expanded(
-          child: Products(list: list , delProduct: delProduct,),
+          child: Products(
+            list: list,
+            delProduct: delProduct,
+          ),
         )
       ],
     );
