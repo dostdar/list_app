@@ -18,6 +18,10 @@ class Products extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Image.asset(list[index]["img"]),
+              Padding(
+                padding: EdgeInsets.all(8),
+                child: Text(list[index]["desc"]),
+              ),
               ButtonBar(
                 alignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -30,11 +34,7 @@ class Products extends StatelessWidget {
                                   map: list[index],
                                 ),
                           ),
-                        ).then((bool value) {
-                          if (value) {
-                            delProduct(index);
-                          }
-                        }),
+                        ),
                   )
                 ],
               )

@@ -3,9 +3,9 @@ import '../product_maneger.dart';
 import './products_admin.dart';
 
 class HomePage extends StatelessWidget {
-  HomePage(this.list, this.addProduct, this.delProduct);
-  final Function addProduct;
+    final Function addProduct;
   final Function delProduct;
+  HomePage(this.list,this.addProduct,this.delProduct);
   final List<Map> list;
 
   @override
@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
               leading: CircleAvatar(child: Text("A")),
               onTap: () {
                 Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => ProductsAdmin()));
+                    MaterialPageRoute(builder: (context) => ProductsAdmin(addProduct,delProduct)));
               },
             ),
           ],
@@ -32,7 +32,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("my app"),
       ),
-      body: ProudctManager(list, addProduct, delProduct),
+      body: ProudctManager(list,),
     );
   }
 }

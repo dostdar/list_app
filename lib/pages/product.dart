@@ -9,6 +9,32 @@ class Product extends StatelessWidget {
     Key key,
   }) : super(key: key);
 
+  _showDia(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text("warning"),
+            content: Text("are you shur to delete"),
+            actions: <Widget>[
+              FlatButton(
+                child: Text("yess"),
+                onPressed: () {
+                  Navigator.pop(context);
+                  Navigator.pop(context, true);
+                },
+              ),
+              FlatButton(
+                child: Text("noooo"),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -27,7 +53,7 @@ class Product extends StatelessWidget {
               FlatButton.icon(
                 label: Text(map['title']),
                 icon: Icon(Icons.arrow_back_ios),
-                onPressed: () => Navigator.pop(context, true),
+                onPressed:() => _showDia(context),
               ),
             ],
           ),
